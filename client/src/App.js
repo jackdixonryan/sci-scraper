@@ -19,6 +19,9 @@ class App extends Component {
             <Route exact path='/saves'>
               <Saves></Saves>
             </Route>
+            <Route exact path='/'>
+              <Articles name="archaeology"></Articles>
+            </Route>
           </Switch>
         </div>
       </Router>
