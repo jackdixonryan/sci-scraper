@@ -1,0 +1,10 @@
+nav ul {
+  text-align: center;
+}
+nav ul li {
+  display: inline;
+  float: none;
+}
+nav ul li a {
+  display: inline-block;
+}

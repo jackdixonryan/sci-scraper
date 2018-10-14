@@ -1,0 +1,11 @@
+.card {
+  height: 500px;
+  width: 30%;
+  overflow: scroll;
+  float: left;
+  margin: 10px;
+}
+
+a {
+  color: tomato;
+}
