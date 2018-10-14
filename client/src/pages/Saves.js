@@ -17,7 +17,7 @@ class Saves extends React.Component{
       return (<Blurb title={article.title} comments={article.comments} image={article.image} originalLink={article.originalLink} writer={article.text}/>)
     })
     return (
-      <div className="results">
+      <div className="articles">
         { articles }
       </div>
     )
