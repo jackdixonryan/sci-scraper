@@ -9,14 +9,6 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-if (process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-
-  const path = require('path');
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
-  });
-}
 // cheerio needs to look for class cIugan to get reddit text.
 
 app.get('/api/:ology', (req, response) => {
@@ -97,6 +89,15 @@ app.get('/saves/articles', (req, res) => {
     .then(found => res.json(found))
     .catch(err => console.error(err));
 });
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('client/build'));
+
+  const path = require('path');
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+  });
+}
 
 app.listen(PORT, () => {
   console.log('express running on port', PORT);
