@@ -73,9 +73,6 @@ app.get('/api/:ology', (req, response) => {
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/savedarticles');
 
 app.post('/saves/addArticle', (req, res) => {
-  console.log('this route just got hit.');
-  console.log(req.body);
-  console.log(req.body.writer);
   db.Article.create(req.body)
     .then(dbCreation => {
       console.log(dbCreation);
@@ -89,6 +86,13 @@ app.get('/saves/articles', (req, res) => {
     .then(found => res.json(found))
     .catch(err => console.error(err));
 });
+
+app.delete('/saves/articles', (req, res) => {
+  db.Article.find({ title: req.body.title })
+    .remove()
+    .then(res => console.log(res))
+    .catch(err => console.error(err));
+})
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
