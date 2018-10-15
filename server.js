@@ -8,6 +8,11 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+const path = require('path');
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
+});
 // cheerio needs to look for class cIugan to get reddit text.
 
 app.get('/api/:ology', (req, response) => {
